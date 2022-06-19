@@ -1,70 +1,58 @@
-import { Auth } from "@encode42/remix-extras";
-import { GitHubStrategy, SocialsProvider } from "remix-auth-socials";
+import { Auth, registerProps } from "@encode42/remix-extras";
+import { GitHubProfile, GitHubStrategy, GoogleProfile, GoogleStrategy, SocialsProvider } from "remix-auth-socials";
 import { api } from "~/util/api.server";
-import { Provider, RegisteredProvider } from "~/util/interface/auth/Provider";
+import { User } from "~/types";
 
-const registeredProviders: RegisteredProvider[] = [{
+const providers: registerProps<unknown>[] = [{
     "name": "GitHub",
-    "route": SocialsProvider.GITHUB,
+    "provider": SocialsProvider.GITHUB,
     "strategy": GitHubStrategy,
+    "verify": <GitHubProfile>(user: GitHubProfile) => {
+        return {
+            "name": user.profile.displayName,
+            "picture": user.profile._json.avatar_url
+        };
+    },
     "options": {
         "clientID": process.env.GITHUB_CLIENT_ID,
-        "clientSecret": process.env.GITHUB_CLIENT_SERET
+        "clientSecret": process.env.GITHUB_CLIENT_SECRET
+    }
+}, {
+    "name": "Google",
+    "provider": SocialsProvider.GOOGLE,
+    "strategy": GoogleStrategy,
+    "verify": <GoogleProfile>(user: GoogleProfile) => {
+        return {
+            "name": user.profile.displayName,
+            "picture": user.profile._json.picture
+        };
+    },
+    "options": {
+        "clientID": process.env.GOOGLE_CLIENT_ID,
+        "clientSecret": process.env.GOOGLE_CLIENT_SECRET
     }
 }];
 
-let auth: Auth;
-let providers: Provider[];
+let auth: Auth<User>;
 
 declare global {
-    var __auth: Auth | undefined;
-    var __providers: Provider[] | undefined;
+    var __auth: Auth<User> | undefined;
 }
 
 if (process.env.NODE_ENV === "production") {
-    const result = initAuth();
-
-    auth = result.auth;
-    providers = result.providers;
+    auth = Auth.from<User>({
+        api,
+        providers
+    });
 } else {
     if (!global.__auth) {
-        const result = initAuth();
-
-        global.__auth = result.auth;
-        global.__providers = result.providers;
+        global.__auth = Auth.from<User>({
+            api,
+            providers
+        });
     }
 
     auth = global.__auth;
-    providers = global.__providers;
 }
 
-function initAuth() {
-    const newAuth = new Auth({
-        api
-    });
-
-    const newProviders: Provider[] = [];
-
-    for (const provider of registeredProviders) {
-        const register = newAuth.register({
-            "strategy": GitHubStrategy,
-            "provider": SocialsProvider.GITHUB,
-            "options": {
-                "clientID": process.env.GITHUB_CLIENT_ID,
-                "clientSecret": process.env.GITHUB_SECRET,
-            }
-        });
-
-        newProviders.push({
-            "name": provider.name,
-            "route": register.route.default
-        });
-    }
-
-    return {
-        "auth": newAuth,
-        "providers": newProviders
-    };
-}
-
-export { auth, providers };
+export { auth };

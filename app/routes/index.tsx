@@ -1,7 +1,14 @@
-import { Text } from "@mantine/core";
+import { Container, Stack, Text } from "@mantine/core";
+import { Header } from "~/component/Header";
 
 export default function IndexPage() {
     return (
-        <Text>Hello World!</Text>
+        <Stack>
+            <Header />
+            <Container>
+                <Text>Hello World!</Text>
+            </Container>
+        </Stack>
     );
 }
+
