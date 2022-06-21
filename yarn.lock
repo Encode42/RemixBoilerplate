@@ -1073,10 +1073,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
-"@encode42/mantine-extras@^3.3.0":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/@encode42/mantine-extras/-/mantine-extras-3.3.0.tgz#68cd49e07063049955d358204fa8a9ab6ea4b870"
-  integrity sha512-wRaJ7mEykI/tEbzQuzJ26iKf3zZvhsVbm7lyt1P3No9eVexeX8RNr8ptCU4PbkUIARWlDN8e/GhoKndB0rjWKw==
+"@encode42/mantine-extras@^3.4.0":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@encode42/mantine-extras/-/mantine-extras-3.4.0.tgz#24ff986d157cf68a273fc2e3bf60b88c45af2d27"
+  integrity sha512-aSTGqaHGvO1pAoX6S/eEyDvmv+bdPXmXc1VIiEiJ2gFFB/57dcZLudTRttwXBZ1kKqOAz5DZWkDjho/i1LrChw==
   dependencies:
     "@mantine/core" "^4.2.0"
     "@mantine/hooks" "^4.2.0"
@@ -1088,12 +1088,12 @@
     file-saver "^2.0.0"
     react-player "^2.10.0"
 
-"@encode42/remix-extras@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@encode42/remix-extras/-/remix-extras-2.0.0.tgz#9a27b80dafcf38d8384fba6129130fc8c7dfd654"
-  integrity sha512-9nI599awDi/4AWXCKvYgdJdnqn/lE5D1XwVOV4uj61aOvXhqmnaVfAXmc++19wr0nwiOJYFma82Pe9vdJCIbFQ==
+"@encode42/remix-extras@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@encode42/remix-extras/-/remix-extras-2.1.2.tgz#49640352197836a7129323eb9849a4630172c0bb"
+  integrity sha512-9uRTEuz0q29ni9Oz6YvdDUJnseTJhnIqkv8oxH/NEsHbNKiKHDUjWAkXJKPEndR7h33hvWle37swBkvslRhu3Q==
   dependencies:
-    "@encode42/mantine-extras" "^3.3.0"
+    "@encode42/mantine-extras" "^3.4.0"
     "@mantine/core" "^4.2.0"
     "@mantine/hooks" "^4.2.0"
     "@mantine/notifications" "^4.2.0"

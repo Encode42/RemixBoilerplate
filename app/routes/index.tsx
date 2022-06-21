@@ -1,14 +1,16 @@
-import { Container, Stack, Text } from "@mantine/core";
+import { Center, Container, Stack, Text, Title } from "@mantine/core";
 import { Header } from "~/component/Header";
+import { StandardLayout } from "~/layout/StandardLayout";
+import { details } from "~/data/details";
 
 export default function IndexPage() {
     return (
-        <Stack>
-            <Header />
-            <Container>
-                <Text>Hello World!</Text>
-            </Container>
-        </Stack>
+        <StandardLayout>
+            <Stack>
+                <Title>Hello World!</Title>
+                <Text>This is an example index page for {details.name}.</Text>
+            </Stack>
+        </StandardLayout>
     );
 }
 

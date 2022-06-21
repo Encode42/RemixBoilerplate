@@ -13,8 +13,8 @@
     "node": ">=14"
   },
   "dependencies": {
-    "@encode42/mantine-extras": "^3.3.0",
-    "@encode42/remix-extras": "^2.0.0",
+    "@encode42/mantine-extras": "^3.4.0",
+    "@encode42/remix-extras": "^2.1.2",
     "@mantine/core": "^4.2.8",
     "@mantine/form": "^4.2.8",
     "@mantine/hooks": "^4.2.8",
