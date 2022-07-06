@@ -23,7 +23,7 @@ interface DocumentProps extends BasicDocumentProps {
 
 interface LoaderResult {
     "theme": getResult,
-    "user": User,
+    "user": User | null,
     "logoutRoute": string,
     "themeSetRoute": string
 }
@@ -56,7 +56,10 @@ export async function loader({ request }: RouteRequest): Promise<LoaderResult> {
 
     return {
         "theme": await theme.get(request),
-        "user": user,
+        "user": user ? {
+            "name": user.name,
+            "picture": user.picture
+        } : null,
         "logoutRoute": auth.logoutRoute,
         "themeSetRoute": theme.setRoute
     };

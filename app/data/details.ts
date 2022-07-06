@@ -3,5 +3,5 @@ interface Details {
 }
 
 export const details: Details = {
-    "name": "RemixBoilerplate"
+    "name": "RemixBoilerplate" // UPDATE: Name
 }

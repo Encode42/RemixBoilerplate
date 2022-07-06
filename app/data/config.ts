@@ -6,6 +6,6 @@ interface Config {
 }
 
 export const config: Config = {
-    "accentColor": "blue",
-    "colorScheme": "dark"
+    "accentColor": "blue", // UPDATE: MantineColor
+    "colorScheme": "dark"  // UPDATE: ColorScheme
 }

@@ -1,7 +1,8 @@
 import { PropsWithChildren } from "react";
-import { AvatarMenuWrapper, Link, LinkProps, useUser } from "@encode42/remix-extras";
+import { Link, LinkProps, LoginWrapper, useUser } from "@encode42/remix-extras";
 import { Button, Group, ThemePaper, ThemeToggle } from "@encode42/mantine-extras";
 import { User } from "~/types";
+import { AvatarMenu } from "~/component/AvatarMenu";
 
 interface HeaderButtonProps extends PropsWithChildren {
     "to": LinkProps["to"]
@@ -33,12 +34,14 @@ export function Header() {
                 </Group>
                 <Group stretch>
                     <ThemeToggle />
-                    <AvatarMenuWrapper picture={user?.picture} buttonProps={{
+                    <LoginWrapper buttonProps={{
                         "size": "md",
                         "sx": {
                             "height": "100%"
                         }
-                    }} />
+                    }}>
+                        <AvatarMenu height={44} picture={user?.picture} />
+                    </LoginWrapper>
                 </Group>
             </Group>
         </ThemePaper>
